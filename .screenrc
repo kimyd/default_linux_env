@@ -1,0 +1,41 @@
+defscrollback 100000
+
+defutf8 on
+defkanji utf-8
+encoding utf-8 utf-8
+defencoding utf-8
+
+escape ^Zz
+bind n screen
+bind l windowlist
+bind j next
+bind h prev
+
+termcap kterm hs@
+terminfo kterm hs@
+vbell off
+bind w windowlist -b
+hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
+shell -$SHELL
+startup_message off
+autodetach on
+
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+log on
+deflog on
+
+# enable background-color-erase setting.
+defbce "on"
+
+# the $TERM variable set to `xterm' for various environment.
+term xterm
+
+# enable 256 color
+#term xterm-256color
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# don't resize terminal width when re-attached.
+termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+
+termcapinfo xterm* ti@:te@
